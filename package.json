@@ -1,0 +1,19 @@
+{
+  "name": "forum_avaliativo_web",
+  "version": "1.0.0",
+  "description": "Desenvolva uma aplicação Web que permita ao usuário gerenciar um cadastro simples de produtos",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/static": "^6.11.2",
+    "@fastify/view": "^8.2.0",
+    "fastify": "^4.23.2",
+    "handlebars": "^4.7.8"
+  }
+}

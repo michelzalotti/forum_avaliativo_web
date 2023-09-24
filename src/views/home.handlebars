@@ -1,0 +1,45 @@
+<header>
+  <h1>Forum Avaliativo</h1>
+  <h2>Controle de Produtos</h2>
+</header>
+<main>
+  <form name="search-form" class="search-form">
+    <label for="search">Produto:</label>
+    <input type="text" name="search" id="search-input" />
+    <button id="search-button" class="btn-search"></button>
+  </form>
+  <div class="actions">
+    <button
+      id="add-product"
+      class="btn btn-add-product"
+      title="Adicionar Produto"
+    ></button>
+  </div>
+  <table class="products">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Produto</th>
+        <th>Preço</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>#1</td>
+        <td>Playstation 5</td>
+        <td>R$1999,00</td>
+        <td>
+          <div class="controls">
+            <button class="btn btn-edit" title="Editar"></button>
+            <button class="btn btn-delete" title="Deletar"></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+{{>form}}
+<footer>
+
+</footer>

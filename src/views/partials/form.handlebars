@@ -1,0 +1,33 @@
+<div id="product-form" class="form-backdrop">
+  <div class="form-container">
+    <header>
+      <h2 class="window-title"></h2>
+    </header>
+    <form name="product" class="product-form">
+      <div class="form-field">
+        <label for="id">Id</label>
+        <input type="text" name="product-id" id="product-id" />
+
+      </div>
+      <div class="form-field">
+        <label for="name">Produto</label>
+        <input type="text" name="product-name" id="product-name" />
+
+      </div>
+      <div class="form-field">
+        <label for="price">Preço</label>
+        <input
+          type="text"
+          name="product-price"
+          id="product-price"
+          onkeyup="mascaraMoeda(this,event)"
+        />
+
+      </div>
+      <div class="form-controls">
+        <button id="btn-confirm" class="btn-confirm">Salvar</button>
+        <button id="btn-cancel" class="btn-cancel">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

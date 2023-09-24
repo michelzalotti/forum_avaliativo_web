@@ -1,0 +1,217 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 5px 0;
+}
+
+h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 0;
+  font-weight: 400;
+}
+
+header {
+  background-color: cornflowerblue;
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.4);
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 100px 20px 50px;
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto 30px;
+}
+
+.search-form label {
+  flex-basis: 30px;
+  font-weight: 600;
+  text-align: left;
+  color: #444;
+}
+
+#search-input {
+  flex: 1 1 200px;
+  border: 1px solid #ccc;
+  padding: 5px 20px;
+  font-size: 1.2rem;
+  outline-color: #777;
+  outline-width: 1px;
+  border-radius: 10px;
+  color: #444;
+}
+
+#search-button {
+  flex-basis: 70px;
+  border: none;
+  border-radius: 5px;
+  padding: 18px;
+  font-weight: 600;
+  background-color: #efefef;
+  color: #fff;
+  cursor: pointer;
+}
+
+.products {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.products thead {
+  color: #444;
+}
+
+tr,
+td,
+th {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+}
+
+td {
+  font-size: 0.9rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background: transparent url("../images/icons8-edit-30.svg") no-repeat
+    center/20px;
+}
+
+.btn-delete {
+  background: transparent url("../images/icons8-delete-30.svg") no-repeat
+    center/20px;
+}
+
+.btn-add-product {
+  width: 30px;
+  height: 30px;
+  padding: 10px 15px;
+  background: #efefef url("../images/icons8-plus.svg") no-repeat center / 25px;
+  border-radius: 10px;
+}
+
+.btn-search {
+  background: url("../images/icons8-search-30.svg") no-repeat center / 20px;
+}
+
+.form-backdrop {
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 100px auto;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.product-form {
+  padding: 5px 20px;
+}
+
+.form-field {
+  margin: 15px 0;
+}
+
+.product-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.product-form input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #444;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  outline-width: 1px;
+  outline-color: #777;
+}
+
+.form-controls {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.form-controls button {
+  padding: 10px 15px 10px 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-confirm {
+  background: #efefef url("../images/icons8-done-30.svg") no-repeat 3px center /
+    20px;
+}
+
+.btn-cancel {
+  background: #efefef url("../images/icons8-close-30.svg") no-repeat 3px center /
+    20px;
+}
+
+#product-form {
+  display: none;
+}
+
+.error-message {
+  display: inline-block;
+  color: #ff0000;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+@media (max-width: 490px) {
+  #search-button {
+    flex: 1 1 200px;
+  }
+
+  .search-form label {
+    flex-basis: 100%;
+  }
+}
