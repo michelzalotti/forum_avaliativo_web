@@ -1,5 +1,4 @@
-# forum_avaliativo_web
-Fórum Avaliativo: desenvolvimento de uma aplicação de cadastro de produtos
+# Fórum Avaliativo: desenvolvimento de uma aplicação de cadastro de produtos
 
 Entrega: até 05/10/2023
 
