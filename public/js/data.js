@@ -1,6 +1,6 @@
 import requestData from "./requestData.js";
 
-async function getProducts() {
+export async function getProducts() {
   try {
     const resp = await requestData(
       "GET",
@@ -16,4 +16,26 @@ async function getProducts() {
   }
 }
 
-export default getProducts;
+export async function getProduct(id) {
+  try {
+    const resp = await requestData(
+      "GET",
+      `http://127.0.0.1:3000/products/${id}`,
+      null
+    );
+
+    if (resp) {
+      return JSON.parse(resp);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function postProduct(product) {
+  try {
+    await requestData("POST", "http://127.0.0.1:3000/products", product);
+  } catch (e) {
+    console.log(e);
+  }
+}

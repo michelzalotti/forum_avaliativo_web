@@ -2,7 +2,11 @@ function requestData(method, url, data) {
   return new Promise((res, rej) => {
     const xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
-    xhr.send();
+    if (data) {
+      xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+    }
+
+    xhr.send(data);
 
     xhr.addEventListener("load", (e) => {
       const status = e.target.status;

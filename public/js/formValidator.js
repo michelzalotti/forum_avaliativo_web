@@ -3,18 +3,24 @@ import formWindow from "./productForm.js";
 function validateFields(formFields) {
   let price = formFields.price.value;
   clearErrors();
+  let flag = true;
 
   if (formFields.id.value === "" || formFields.id.value < 0) {
     errorMessage(formFields.id, "Valor inválido para o campo!");
+    flag = false;
   }
 
   if (formFields.name.value === "" || formFields.name.value.length < 3) {
     errorMessage(formFields.name, "Valor inválido para o campo!");
+    flag = false;
   }
 
   if (price === "" || price.length < 3) {
     errorMessage(formFields.price, "Valor inválido para o campo!");
+    flag = false;
   }
+
+  return flag;
 }
 
 function clearErrors() {

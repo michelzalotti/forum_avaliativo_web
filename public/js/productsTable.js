@@ -1,10 +1,12 @@
-import getProducts from "./data.js";
+import { getProducts } from "./data.js";
 import { currencyFormat } from "./utilities.js";
+import { openForm } from "./productForm.js";
 
 const productsTable = document.querySelector(".products tbody");
 
 async function refreshTable(data) {
   try {
+    productsTable.innerHTML = "";
     addData(await getProducts());
   } catch (e) {
     console.log(e);
@@ -45,6 +47,11 @@ function createRowControls(id) {
 
   const btnEdit = createButtons("btn-edit", "Editar Produto", id);
   const btnDelete = createButtons("btn-delete", "Excluir Produto", id);
+
+  btnEdit.addEventListener("click", (e) => {
+    const productId = e.target.getAttribute("data-id");
+    openForm("Editar Produto", productId);
+  });
 
   div.appendChild(btnEdit);
   div.appendChild(btnDelete);
