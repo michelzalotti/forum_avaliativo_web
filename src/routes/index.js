@@ -24,6 +24,18 @@ async function routes(fastify, options) {
     const { id, name, price } = request.body;
     products.push({ id, name, price });
   });
+
+  fastify.put("/products/:id", async (request, reply) => {
+    const { id, name, price } = request.body;
+    const pId = products.findIndex((p) => p.id === parseInt(id));
+    products[pId] = { id, name, price };
+  });
+
+  fastify.delete("/products/:id", async (request, reply) => {
+    const { id } = request.params;
+    delete products[products.findIndex((p) => p.id === parseInt(id))];
+    console.log(products);
+  });
 }
 
 module.exports = routes;

@@ -1,12 +1,14 @@
 import { getProducts } from "./data.js";
 import { currencyFormat } from "./utilities.js";
 import { openForm } from "./productForm.js";
+import { product } from "./data.js";
+import { deleteProduct } from "./data.js";
 
 const productsTable = document.querySelector(".products tbody");
 
-async function refreshTable(data) {
+async function refreshTable() {
+  productsTable.innerHTML = "";
   try {
-    productsTable.innerHTML = "";
     addData(await getProducts());
   } catch (e) {
     console.log(e);
@@ -49,8 +51,14 @@ function createRowControls(id) {
   const btnDelete = createButtons("btn-delete", "Excluir Produto", id);
 
   btnEdit.addEventListener("click", (e) => {
-    const productId = e.target.getAttribute("data-id");
-    openForm("Editar Produto", productId);
+    product.id = parseInt(e.target.getAttribute("data-id"));
+    openForm("Editar Produto");
+  });
+
+  btnDelete.addEventListener("click", (e) => {
+    product.id = parseInt(e.target.getAttribute("data-id"));
+    deleteProduct(product.id);
+    refreshTable();
   });
 
   div.appendChild(btnEdit);

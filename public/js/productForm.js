@@ -1,7 +1,8 @@
 import validateFields, { clearErrors } from "./formValidator.js";
 import refreshTable from "./productsTable.js";
-import { getProduct, postProduct } from "./data.js";
+import { getProduct, postProduct, updateProduct } from "./data.js";
 import { currencyFormat, currencyToNumber } from "./utilities.js";
+import { product } from "./data.js";
 
 const formWindow = document.querySelector("#product-form");
 const formProductId = document.querySelector("#product-id");
@@ -11,7 +12,9 @@ const formCancelButton = document.querySelector("#btn-cancel");
 const formConfirmButton = document.querySelector("#btn-confirm");
 const windowTitle = formWindow.querySelector(".window-title");
 
-function openForm(title, id) {
+function openForm(title) {
+  const id = product.id;
+
   windowTitle.innerText = title;
   formProductId.value = "";
   formProductName.value = "";
@@ -20,27 +23,35 @@ function openForm(title, id) {
   formWindow.style.display = "block";
   clearErrors();
 
-  if (id !== 0) getData(id);
+  if (id) {
+    getData(id);
+    formProductId.setAttribute("disabled", "disabled");
+  }
 
-  formCancelButton.addEventListener("click", (e) => {
-    e.preventDefault();
+  formCancelButton.addEventListener("click", cancelButtonEvent);
+  formConfirmButton.addEventListener("click", confirmButtonEvent);
+}
+
+function cancelButtonEvent(e) {
+  e.preventDefault();
+  closeForm();
+}
+
+function confirmButtonEvent(e) {
+  e.preventDefault();
+
+  console.log("Salvou!");
+
+  if (saveData(product.id)) {
     closeForm();
-  });
-
-  formConfirmButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (id === 0) {
-      saveData();
-      closeForm();
-      refreshTable();
-    } else {
-      updateData();
-    }
-  });
+  }
 }
 
 function closeForm() {
+  removeEventListener("click", cancelButtonEvent);
+  removeEventListener("click", confirmButtonEvent);
   formWindow.style.display = "none";
+  refreshTable();
 }
 
 async function getData(id) {
@@ -58,7 +69,7 @@ async function getData(id) {
   }
 }
 
-function saveData() {
+function saveData(id) {
   const formFields = {
     id: formProductId,
     name: formProductName,
@@ -72,10 +83,18 @@ function saveData() {
       price: currencyToNumber(formFields.price.value),
     };
 
-    postProduct(JSON.stringify(product));
+    if (id) {
+      console.log("Atualizou", product);
+      updateProduct(product.id, JSON.stringify(product));
+    } else if (id === null) {
+      console.log("Salvou", product);
+      postProduct(JSON.stringify(product));
+    }
+
+    return true;
+  } else {
+    return false;
   }
 }
-
-function updateData() {}
 
 export { formWindow as default, openForm };

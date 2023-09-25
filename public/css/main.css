@@ -172,6 +172,10 @@ td {
   outline-color: #777;
 }
 
+.product-form input:disabled {
+  background-color: #efefef;
+}
+
 .form-controls {
   display: flex;
   gap: 20px;
